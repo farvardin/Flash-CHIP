@@ -12,7 +12,8 @@ mv jessie_source_list.txt /etc/apt/sources.list
 echo "."
 echo "*** Installing debian keyring. ***"
 apt update
-apt install debian-keyring debian-archive-keyring -y
+# apt install debian-keyring debian-archive-keyring -y
+apt install --force-yes debian-keyring debian-archive-keyring -y
 sleep 5
 
 echo "."
@@ -54,12 +55,13 @@ sudo ./PocketDesk/PocketDESK.sh
 echo "."
 echo "*** Upgrading Debian Jessie to Debian Stretch ***"
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak2
-wget https://raw.githubusercontent.com/asophila/Flash-CHIP/master/CHIP-updater/stretch_source_list.txt
+wget https://raw.githubusercontent.com/farvardin/Flash-CHIP/master/CHIP-updater/stretch_source_list.txt
 mv stretch_source_list.txt /etc/apt/sources.list
 
 echo "."
 echo "*** apt update & upgrade ***"
 apt update
+apt install debian-keyring debian-archive-keyring -y
 apt install linux-image-armmp -y 
 apt full-upgrade -y
 sleep 5
